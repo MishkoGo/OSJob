@@ -6,8 +6,10 @@ export default function PostUpdateForm(props) {
 
     const initialFormData = Object.freeze({
         text: props.post.text,
-        from: props.post.from,
+        whom: props.post.whom,
+        action: props.post.action,
         date: props.post.date,
+        
     });
 
 
@@ -17,6 +19,7 @@ export default function PostUpdateForm(props) {
 
     const handleChange = (e) => {
         //Установка данных формы
+
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
@@ -30,7 +33,13 @@ export default function PostUpdateForm(props) {
         e.preventDefault();
 
         const postToUpdate = {
+            postId: props.post.postId,
             date: formData.date,
+            text: formData.text,
+            from: props.post.from,
+            action: formData.action,
+            whom: formData.whom,
+            
         };
         //URL
         const url = Constants.API_URL_UPDATE_POST;
@@ -86,18 +95,22 @@ export default function PostUpdateForm(props) {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{formData.date}</td>
-                            <td>{formData.date}</td>
-                            <td>{formData.from}</td>
-                            <td>{formData.text}</td>
+                            <td>{props.post.date}</td>
+                            <td><select class="form-select" name="action" value = {formData.action} onChange={handleChange}>
+                                <option value="on" name = "ON">Активный</option>
+                                <option value="off">Оффлайн</option>
+                            </select></td>
+                            <td>{props.post.whom}</td>
+                            <td>{props.post.text}</td>
+                            
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <button onClick={handleSubmit} className="btn btn-dark btn-lg w-200 mt-5">Открепить от исполнителя</button>
+            <button onClick={handleSubmit} className="btn btn-dark btn-lg w-200 mt-5">Остановить выполнение</button>
             <br />
-            <button onClick={() => props.onPostUpdated(null)} className="btn btn-dark btn-lg w-200 mt-3" >Приостановить</button>
+            <button onClick={() => props.onPostUpdated(null)} className="btn btn-dark btn-lg w-200 mt-3" >Назад</button>
             <br />
             <button onClick={() => { if (window.confirm(`Are you sure ${formData.text}`)) deletePost(props.post.postId) }} className="btn btn-dark btn-lg w-200 mt-3">Завершить</button>
         </form>
@@ -113,7 +126,7 @@ export default function PostUpdateForm(props) {
         });
 
         if (index !== -1) {
-           postsCopy.splice(index, 1);
+            postsCopy.splice(index, 1);
         }
 
         setPosts(postsCopy);

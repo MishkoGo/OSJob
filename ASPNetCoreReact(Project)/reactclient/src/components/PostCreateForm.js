@@ -5,7 +5,8 @@ import Constants from '../utilities/Constants'
 export default function PostCreateForm(props) {
     const initialFormData = Object.freeze({
         text: "12",
-        from: "Zavod"
+        from: "Zavod",
+        whom: "Ai"
     });
 
     //Передаем некоторые начальные данные формы
@@ -27,7 +28,7 @@ export default function PostCreateForm(props) {
             postId: 0,
             text: formData.text,
             date: formData.date,
-            to: formData.to,
+            whom: formData.whom,
             from: formData.from
         };
         //URL
@@ -66,7 +67,7 @@ export default function PostCreateForm(props) {
             </div>
             <div className='mt-3'>
                 <label className='h3 form-label'> Кому </label>
-                <input value={FormData.to} name="to" type="text" className='form-control' onChange={handleChange} />
+                <input value={FormData.whom} name="whom" type="text" className='form-control' onChange={handleChange} />
             </div>
             <div className='mt-2'>
                 <label className='h3 form-label'>Описание</label>

@@ -21,9 +21,9 @@ namespace aspnetserver.Data
                     PostId = i,
                     Date = DateTime.Now,
                     From = $"From AI",
-                    To = $"Manager",
+                    whom = $"Manager",
                     Text = $"This is task {i} and do it, please.",
-                    
+                    Action = "Active"
                 };
             }
 

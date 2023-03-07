@@ -63,7 +63,7 @@ export default function App() {
               <th scope="col">От кого</th>
               <th scope="col">Кому</th>
               <th scope="col">Описание</th>
-              <th scope="col">PostId </th>
+
             </tr>
           </thead>
           <tbody>
@@ -72,7 +72,7 @@ export default function App() {
                 <th scope="row">{post.postId}</th>
                 <td>{post.date}</td>
                 <td>{post.from}</td>
-                <td>{post.to}</td>
+                <td>{post.whom}</td>
                 <td>{post.text}</td>
                 
                 <td>
@@ -95,7 +95,7 @@ export default function App() {
       return;
     }
 
-    alert(`Post successfully created. After clicking OK, your new post tilted "${createdPost.title}" will show up in the table below.`);
+    alert(`Post successfully created. After clicking OK, your new post tilted "${createdPost.text}" will show up in the table below.`);
 
     getPosts();
   }
@@ -113,17 +113,19 @@ export default function App() {
     const index = postsCopy.findIndex((postsCopyPost, currentIndex) => {
       if(postsCopyPost.postId === updatedPost.postId){
         return true;
+        
       }
     });
 
     if(index !== -1){
       //Устанавливаем postsCopy по индексу нашего индекса в обновленный пост
       postsCopy[index] = updatedPost;
+      
     }
 
     setPosts(postsCopy);
 
-    alert(`Post successfully updated. After clicking OK, look for the post with the title "${updatedPost.text}" in the table below to see the updates.`);
+    alert(`Post successfully updated. After clicking OK, look for the post with the title "${updatedPost.whom}" in the table below to see the updates.`);
   }
 }
 

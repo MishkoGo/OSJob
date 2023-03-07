@@ -14,10 +14,12 @@ namespace aspnetserver.Data
         public string From { get; set; } = string.Empty;
         [Required]
         [MaxLength(100)]
-        public string To { get; set; } = string.Empty;
+        public string whom { get; set; } = string.Empty;
         [Required]
         [MaxLength(1000)]
         public string Text { get; set; } = string.Empty;
+        [Required]
+        public string Action { get; set; } = string.Empty;
         
     }
 }

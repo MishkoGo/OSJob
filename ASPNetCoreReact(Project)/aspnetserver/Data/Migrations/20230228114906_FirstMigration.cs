@@ -21,8 +21,9 @@ namespace aspnetserver.Data.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Date = table.Column<DateTime>(type: "TEXT", nullable: false),
                     From = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    To = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    whom = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     Text = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: false),
+                    Action = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -31,7 +32,7 @@ namespace aspnetserver.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Posts",
-                columns: new[] { "PostId", "Date", "From", "Text", "To" },
+                columns: new[] { "PostId", "Date", "From", "Text", "" },
                 values: new object[,]
                 {
                     { 1, new DateTime(2023, 2, 28, 14, 49, 5, 944, DateTimeKind.Local).AddTicks(7236), "From AI", "This is task 1 and do it, please.", "Manager" },
