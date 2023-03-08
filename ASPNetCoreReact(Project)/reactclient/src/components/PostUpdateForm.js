@@ -9,7 +9,7 @@ export default function PostUpdateForm(props) {
         whom: props.post.whom,
         action: props.post.action,
         date: props.post.date,
-        
+
     });
 
 
@@ -26,7 +26,38 @@ export default function PostUpdateForm(props) {
         });
     };
 
+    const handleSubmit_2 = (e) => {
+        //Предотвратит выполнение действия по умолчанию при отправки формы
+        e.preventDefault();
 
+        const postToUpdate = {
+            postId: props.post.postId,
+            date: formData.date,
+            text: formData.text,
+            from: props.post.from,
+            action: formData.action,
+           
+        };
+
+        const url = Constants.API_URL_UPDATE_POST;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(postToUpdate)
+        })
+            .then(Response => Response.json())
+            .then(responseFromServer => {
+                console.log(responseFromServer);
+            })
+            .catch((error) => {
+                console.log(error);
+                alert(error);
+            });
+
+        props.onPostUpdated(postToUpdate);
+    };
 
     const handleSubmit = (e) => {
         //Предотвратит выполнение действия по умолчанию при отправки формы
@@ -38,10 +69,9 @@ export default function PostUpdateForm(props) {
             text: formData.text,
             from: props.post.from,
             action: formData.action,
-            whom: formData.whom,
-            
+            whom: formData.whom
         };
-        //URL
+
         const url = Constants.API_URL_UPDATE_POST;
 
         fetch(url, {
@@ -80,6 +110,7 @@ export default function PostUpdateForm(props) {
             });
     }
 
+    
     return (
         <form className='w-100 px-5'>
             <center><h1 className='mt-5'>Работа с задачей</h1></center>
@@ -94,23 +125,22 @@ export default function PostUpdateForm(props) {
                         </tr>
                     </thead>
                     <tbody>
+                    
                         <tr>
                             <td>{props.post.date}</td>
                             <td><select class="form-select" name="action" value = {formData.action} onChange={handleChange}>
-                                <option value="on" name = "ON">Активный</option>
-                                <option value="off">Оффлайн</option>
+                                <option value="Активировать">Активный</option>
+                                <option value="Отключить">Оффлайн</option>
                             </select></td>
-                            <td>{props.post.whom}</td>
+                            <td><span name="action" value = {formData.action} onChange={handleChange} >{props.post.whom}</span></td>
                             <td>{props.post.text}</td>
-                            
                         </tr>
                     </tbody>
                 </table>
             </div>
-
-            <button onClick={handleSubmit} className="btn btn-dark btn-lg w-200 mt-5">Остановить выполнение</button>
+            <button onClick={handleSubmit} className="btn btn-dark btn-lg w-200 mt-5">Выбрать режим - {formData.action}</button>
             <br />
-            <button onClick={() => props.onPostUpdated(null)} className="btn btn-dark btn-lg w-200 mt-3" >Назад</button>
+            <button onClick={handleSubmit_2} className="btn btn-dark btn-lg w-200 mt-3" >Открепить {formData.whom}</button>
             <br />
             <button onClick={() => { if (window.confirm(`Are you sure ${formData.text}`)) deletePost(props.post.postId) }} className="btn btn-dark btn-lg w-200 mt-3">Завершить</button>
         </form>

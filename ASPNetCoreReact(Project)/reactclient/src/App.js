@@ -125,7 +125,7 @@ export default function App() {
 
     setPosts(postsCopy);
 
-    alert(`Post successfully updated. After clicking OK, look for the post with the title "${updatedPost.whom}" in the table below to see the updates.`);
+    //alert(`Post successfully updated. After clicking OK, look for the post with the title "${updatedPost.whom}" in the table below to see the updates.`);
   }
 }
 

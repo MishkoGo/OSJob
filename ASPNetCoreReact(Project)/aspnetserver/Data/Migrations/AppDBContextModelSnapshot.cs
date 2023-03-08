@@ -42,6 +42,7 @@ namespace aspnetserver.Data.Migrations
                         .HasColumnType("TEXT");
                     b.Property<string>("Action")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("PostId");

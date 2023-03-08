@@ -19,6 +19,7 @@ namespace aspnetserver.Data
         [MaxLength(1000)]
         public string Text { get; set; } = string.Empty;
         [Required]
+        [MaxLength(100)]
         public string Action { get; set; } = string.Empty;
         
     }

@@ -23,7 +23,7 @@ namespace aspnetserver.Data
                     From = $"From AI",
                     whom = $"Manager",
                     Text = $"This is task {i} and do it, please.",
-                    Action = "Active"
+                    Action = "",
                 };
             }
 

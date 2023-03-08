@@ -44,9 +44,10 @@ namespace aspnetserver.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Action")
-                       .IsRequired()
-                       .HasColumnType("TEXT");
+                     b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
 
                     b.HasKey("PostId");
 
@@ -59,8 +60,7 @@ namespace aspnetserver.Data.Migrations
                             Date = new DateTime(2023, 2, 28, 14, 49, 5, 944, DateTimeKind.Local).AddTicks(7236),
                             From = "From AI",
                             Text = "This is task 1 and do it, please.",
-                            whom = "Manager",
-                            Action = "Action"
+                            whom = "Manager"
                         },
                         new
                         {
@@ -68,8 +68,7 @@ namespace aspnetserver.Data.Migrations
                             Date = new DateTime(2023, 2, 28, 14, 49, 5, 944, DateTimeKind.Local).AddTicks(7266),
                             From = "From AI",
                             Text = "This is task 2 and do it, please.",
-                            whom = "Manager",
-                            Action = "Action"
+                            whom = "Manager"
                         },
                         new
                         {
@@ -77,8 +76,7 @@ namespace aspnetserver.Data.Migrations
                             Date = new DateTime(2023, 2, 28, 14, 49, 5, 944, DateTimeKind.Local).AddTicks(7268),
                             From = "From AI",
                             Text = "This is task 3 and do it, please.",
-                            whom = "Manager",
-                            Action = "Action"
+                            whom = "Manager"
                         },
                         new
                         {
@@ -86,8 +84,7 @@ namespace aspnetserver.Data.Migrations
                             Date = new DateTime(2023, 2, 28, 14, 49, 5, 944, DateTimeKind.Local).AddTicks(7270),
                             From = "From AI",
                             Text = "This is task 4 and do it, please.",
-                            whom = "Manager",
-                            Action = "Action"
+                            whom = "Manager"
                         },
                         new
                         {
@@ -95,8 +92,7 @@ namespace aspnetserver.Data.Migrations
                             Date = new DateTime(2023, 2, 28, 14, 49, 5, 944, DateTimeKind.Local).AddTicks(7272),
                             From = "From AI",
                             Text = "This is task 5 and do it, please.",
-                            whom = "Manager",
-                            Action = "Action"
+                            whom = "Manager"
                         },
                         new
                         {
@@ -104,8 +100,7 @@ namespace aspnetserver.Data.Migrations
                             Date = new DateTime(2023, 2, 28, 14, 49, 5, 944, DateTimeKind.Local).AddTicks(7273),
                             From = "From AI",
                             Text = "This is task 6 and do it, please.",
-                            whom = "Manager",
-                            Action = "Action"
+                            whom = "Manager"
                         });
                 });
 #pragma warning restore 612, 618
