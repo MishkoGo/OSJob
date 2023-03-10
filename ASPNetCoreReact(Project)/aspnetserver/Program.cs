@@ -46,8 +46,8 @@ app.UseHttpsRedirection();
 app.UseCors("CORSPolicy");
 
 //“очка получени€ сообщений
+
 app.MapGet("/get-all-posts", async () => await PostsRepository.GetPostsAsync())
-    //ƒобавл€ем тег, что бы им€ блоканад нашей конечной точкой изменилось
     .WithTags("Posts Endpoints");
 
 //ƒобавл€ем конечную точку получени€ дл€ определенного сообщдени€ с идентификатором сообщени€
